@@ -52,7 +52,7 @@ const getsubject = async (req, res) => {
             },
             attributes: ['sub_name', 'sub_code', 'sub_sem']
         });
-        res.status(200).send(allsub);
+        res.status(200).json(allsub);
     } catch (err) {
         res.status(400).json({
             "status": "unsuccessful",
