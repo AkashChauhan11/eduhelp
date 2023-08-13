@@ -58,7 +58,7 @@ class AttendanceProvider extends ChangeNotifier {
       slot,
       type,
       remark,
-      DateTime.now(),
+      date,
     ).then((_) {
       fillSem = 0;
       subCode = "";

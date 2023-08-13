@@ -57,7 +57,7 @@ class _SemWiseAttendanceState extends State<SemWiseAttendance> {
                 )
                 .toList(),
           ),
-          Divider(),
+          const Divider(),
           Wrap(
             direction: Axis.horizontal,
             children: months
