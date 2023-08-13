@@ -4,6 +4,7 @@ import 'package:education/screens/Attendance/custom_widgets/slot_drop_down.dart'
 import 'package:education/screens/Attendance/custom_widgets/subject_drop_down.dart';
 import 'package:education/screens/Attendance/custom_widgets/type_drop_down.dart';
 import 'package:education/screens/Attendance/custome_views/home_attendance_view.dart';
+import 'package:education/screens/Attendance/full_attendance_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -23,8 +24,6 @@ class _AttendanceHomeState extends State<AttendanceHome> {
         .getInitialAttendanceScreenData();
     // WidgetsFlutterBinding.ensureInitialized();
   }
-
-  
 
   int stateupdate = 0;
 
@@ -154,6 +153,22 @@ class _AttendanceHomeState extends State<AttendanceHome> {
                         fontWeight: FontWeight.bold),
                   ),
                   const Divider(),
+                  GestureDetector(
+                    onTap: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const FullAttendanceScreen(),
+                          ))
+                    },
+                    child: const SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        "Full Details",
+                        textAlign: TextAlign.end,
+                      ),
+                    ),
+                  ),
                   HomeAttendanceView(attendanceProvider: attendanceProvider)
                   //Attendance Chart to be shown here....
                 ],

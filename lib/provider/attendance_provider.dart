@@ -24,6 +24,9 @@ class AttendanceProvider extends ChangeNotifier {
   DateTime date = DateTime.now();
   int remark = 1;
 
+  //Full attendance screen variables
+  int semWiseSelectedSem = 0;
+
   //getters
   List<Subject> get subjects => _subjects;
   List<AttendanceModel> get attendanceList => _attendanceList;
