@@ -89,14 +89,17 @@ class _AttendanceHomeState extends State<AttendanceHome> {
                                         firstDate:
                                             DateTime(DateTime.now().month - 6),
                                         lastDate: DateTime.now());
+                                    print(pickedDate);
 
-                                    // value.datepicked(DateFormat("dd-MM-yyyy")
-                                    //     .format(picked_date!));
+                                    attendanceProvider.date = DateTime.parse(
+                                        DateFormat('yyyy-MM-dd')
+                                            .format(pickedDate!));
+                                    print(attendanceProvider.date);
                                   },
                                   readOnly: true,
                                   decoration: InputDecoration(
-                                    hintText: DateFormat("dd-MM-yyyy")
-                                        .format(DateTime.now()),
+                                    hintText:
+                                        attendanceProvider.date.toString(),
                                     contentPadding: const EdgeInsets.all(5),
                                     prefixIcon: const Icon(Icons.date_range),
                                     border: OutlineInputBorder(

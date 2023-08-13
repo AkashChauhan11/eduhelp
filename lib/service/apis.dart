@@ -52,7 +52,7 @@ Future<void> fillAttendance(int userId, String subCode, int sem, int slot,
           "sub_code": subCode,
           "sem": sem,
           "slot": slot,
-          "date": DateTime.now().toString(),
+          "date": date.toString(),
           "type": type,
           "remark": remark
         }),
