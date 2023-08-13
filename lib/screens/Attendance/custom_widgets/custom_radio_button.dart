@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../provider/attendance_provider.dart';
 
 class CustomRadioButton extends StatefulWidget {
   const CustomRadioButton({super.key});
@@ -8,9 +11,11 @@ class CustomRadioButton extends StatefulWidget {
 }
 
 class _CustomRadioButtonState extends State<CustomRadioButton> {
-  int selected=1;
+  int selected = 1;
   @override
   Widget build(BuildContext context) {
+    final attendanceProvider =
+        Provider.of<AttendanceProvider>(context, listen: false);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -37,7 +42,8 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
         Radio(
           onChanged: (value) {
             setState(() {
-              selected = value!;
+              attendanceProvider.remark = value!;
+              selected = value;
             });
             // updateRemark(selected);
           },

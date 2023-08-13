@@ -53,7 +53,30 @@ const modifyAttendance=async (req,res)=>{
 }
 
 const getUserAttendnace=async(req,res)=>{
-    //getting attendance of the user....
+    const userid=req.params.userid;
+    try{
+    const attendance= await Attendance.findAll({
+        where:{
+            user_id:userid
+        },
+        attributes:['sub_code','sem','slot','date','remark','type']
+    });
+    if(attendance.length==0){
+        res.status(200).json({
+            "status": "Not Found",
+            "message": "Data not found"
+        });
+    }else{
+        res.status(200).json(attendance);
+    }
+}catch(e){
+    res.status(400).json({
+        "status": "Error",
+        "message": e.message,
+        
+    });
+}
+    
 }
 
 

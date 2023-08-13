@@ -1,3 +1,4 @@
+import 'package:education/models/attendance_model.dart';
 import 'package:education/models/subject_model.dart';
 import 'package:education/service/apis.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 class AttendanceProvider extends ChangeNotifier {
   //user academic details
   List<Subject> _subjects = [];
+  List<AttendanceModel> _attendanceList = [];
   int currentSem = 4;
 
   //user login details
@@ -24,15 +26,23 @@ class AttendanceProvider extends ChangeNotifier {
 
   //getters
   List<Subject> get subjects => _subjects;
+  List<AttendanceModel> get attendanceList => _attendanceList;
 
 //-------------------Methods for API calls--------------------------------
   // getting all subjects of a particular user
-  Future getsubject() async {
+
+  getInitialAttendanceScreenData() async {
     fetchingData = true;
+    await getsubject();
+    await getUserAttendance();
+    fetchingData = false;
+    print(attendanceList);
+    notifyListeners();
+  }
+
+  getsubject() async {
     List<Subject>? subjects = await getallsubjects(userId);
     _subjects = subjects;
-    fetchingData = false;
-    notifyListeners();
   }
 
   //fill attendance of the user...
@@ -41,7 +51,7 @@ class AttendanceProvider extends ChangeNotifier {
     await fillAttendance(
       userId,
       subCode,
-      fillSem,
+      fillSem = currentSem,
       slot,
       type,
       remark,
@@ -57,4 +67,10 @@ class AttendanceProvider extends ChangeNotifier {
     fetchingData = false;
     notifyListeners();
   }
+
+  getUserAttendance() async {
+    _attendanceList = await getuserattendace(userId);
+  }
 }
+
+//getting user attendance

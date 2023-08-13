@@ -3,6 +3,7 @@ import 'package:education/screens/Attendance/custom_widgets/custom_radio_button.
 import 'package:education/screens/Attendance/custom_widgets/slot_drop_down.dart';
 import 'package:education/screens/Attendance/custom_widgets/subject_drop_down.dart';
 import 'package:education/screens/Attendance/custom_widgets/type_drop_down.dart';
+import 'package:education/screens/Attendance/custome_views/home_attendance_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -18,9 +19,14 @@ class _AttendanceHomeState extends State<AttendanceHome> {
   @override
   void initState() {
     super.initState();
-    Provider.of<AttendanceProvider>(context, listen: false).getsubject();
+    Provider.of<AttendanceProvider>(context, listen: false)
+        .getInitialAttendanceScreenData();
     // WidgetsFlutterBinding.ensureInitialized();
   }
+
+  
+
+  int stateupdate = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +129,7 @@ class _AttendanceHomeState extends State<AttendanceHome> {
                             ],
                           ),
                         ),
-                        CustomRadioButton(),
+                        const CustomRadioButton(),
                         ElevatedButton(
                           style: TextButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
@@ -131,7 +137,9 @@ class _AttendanceHomeState extends State<AttendanceHome> {
                           ),
                           onPressed: () {
                             attendanceProvider.fillUserAttendance();
-                            setState(() {});
+                            setState(() {
+                              stateupdate = stateupdate == 0 ? 1 : 0;
+                            });
                           },
                           child: const Text("Submit"),
                         ),
@@ -146,7 +154,7 @@ class _AttendanceHomeState extends State<AttendanceHome> {
                         fontWeight: FontWeight.bold),
                   ),
                   const Divider(),
-
+                  HomeAttendanceView(attendanceProvider: attendanceProvider)
                   //Attendance Chart to be shown here....
                 ],
               ),

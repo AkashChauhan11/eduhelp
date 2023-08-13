@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:education/models/attendance_model.dart';
 import 'package:education/models/subject_model.dart';
 import 'package:education/utils/dialogs.dart';
 import 'package:education/utils/navigator_context.dart';
@@ -71,5 +72,28 @@ Future<void> fillAttendance(int userId, String subCode, int sem, int slot,
     } catch (e) {
       //show dialog with msg
     }
+  }
+}
+
+Future<List<AttendanceModel>> getuserattendace(int userid) async {
+  List<AttendanceModel> attendanceList = [];
+  try {
+    final response = await http.get(
+      Uri.parse("http://192.168.137.1:3000/attendance/getattendance/$userid"),
+      headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+      },
+    );
+    if (response.statusCode == 200) {
+      final body = jsonDecode(response.body);
+      for (Map i in body) {
+        attendanceList.add(AttendanceModel.fromJson(i));
+      }
+      return attendanceList;
+    } else {
+      return [];
+    }
+  } catch (e) {
+    return [];
   }
 }
