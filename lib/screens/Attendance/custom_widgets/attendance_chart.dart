@@ -7,15 +7,22 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 class CustomAttendanceChart extends StatelessWidget {
   final Subject subject;
   final AttendanceProvider attendanceProvider;
+  final bool monthwiseScreenCalculation;
   const CustomAttendanceChart(
-      {super.key, required this.subject, required this.attendanceProvider});
+      {super.key,
+      required this.subject,
+      required this.attendanceProvider,
+      this.monthwiseScreenCalculation = false});
 
   @override
   Widget build(BuildContext context) {
-    double percentage = ChartCalculation.getAttendancePercentage(
-        subject.subCode!,
-        subject.subSem!,
-        attendanceProvider); //get percentage function to be called here
+    double percentage = monthwiseScreenCalculation
+        ? ChartCalculation.getPercentageForMonthWise(
+            attendanceProvider, subject.subCode!)
+        : ChartCalculation.getAttendancePercentage(
+            subject.subCode!,
+            subject.subSem!,
+            attendanceProvider); //get percentage function to be called here
     return CircularPercentIndicator(
       progressColor: Theme.of(context).colorScheme.primary,
       curve: Curves.easeInOutSine,

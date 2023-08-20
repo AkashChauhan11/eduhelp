@@ -19,9 +19,9 @@ class _SemWiseAttendanceState extends State<SemWiseAttendance> {
   @override
   Widget build(BuildContext context) {
     final attedanceProvider = Provider.of<AttendanceProvider>(context);
+    List<String> months = ChartCalculation.getMonthList(attedanceProvider);
     List<Subject> subjects = ChartCalculation.getSubList(attedanceProvider,
         screen: "FullAttendanceScreen");
-    List<String> months = ChartCalculation.getMonthList(attedanceProvider);
     return Padding(
       padding: const EdgeInsets.all(5),
       child: Column(

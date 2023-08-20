@@ -1,3 +1,4 @@
+import 'package:education/screens/Rooms/custom_widgets/room.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +9,6 @@ class HomeScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: size.longestSide,
       width: double.infinity,
       child: SingleChildScrollView(
         child: Column(
@@ -111,13 +111,15 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  //   builder: (context) => FullAttendanceDetailScreen(),
-                  // ));
-                },
-                child: Text("next page"))
+            // Wrap(children: [
+            //   RoomContainer(),
+            //   RoomContainer(),
+            //   RoomContainer(),
+            //   RoomContainer(),
+            //   RoomContainer(),
+            // ])
+            // SizedBox(height: 800,width: double.infinity,child: RoomContainer())
+            RoomContainer()
           ],
         ),
       ),

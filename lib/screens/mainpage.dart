@@ -1,19 +1,18 @@
 import 'package:education/screens/Attendance/attendancehome.dart';
-import 'package:education/screens/home.dart';
-import 'package:education/screens/profile.dart';
+import 'package:education/screens/Rooms/home.dart';
 import 'package:education/screens/task.dart';
 import 'package:flutter/material.dart';
+
+import 'Profile/profile_screen.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
   State<MainPage> createState() => _MainPageState();
-  
 }
 
 class _MainPageState extends State<MainPage> {
-  
   int _current = 0;
   final screens = const [
     HomeScreen(),
@@ -24,7 +23,6 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     final size = MediaQuery.of(context).size;
     return Scaffold(
       //App Bar
@@ -44,7 +42,6 @@ class _MainPageState extends State<MainPage> {
           width: size.shortestSide * 0.65,
           child: ElevatedButton(
               onPressed: () {
-               
                 // Navigator.of(context).push(MaterialPageRoute(
                 //   builder: (context) => FullAttendanceDetailScreen(),
                 // ));

@@ -26,6 +26,8 @@ class AttendanceProvider extends ChangeNotifier {
 
   //Full attendance screen variables
   int semWiseSelectedSem = 0;
+  String filteredmonth = "";
+  int filteredyear=0;
 
   //getters
   List<Subject> get subjects => _subjects;

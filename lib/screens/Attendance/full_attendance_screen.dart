@@ -1,4 +1,6 @@
+import 'package:education/screens/Attendance/custome_views/month_wise_attendance_view.dart';
 import 'package:education/screens/Attendance/custome_views/sem_wise_attendance_view.dart';
+import 'package:education/screens/Attendance/custome_views/subject_wise_attendance_view.dart';
 import 'package:flutter/material.dart';
 
 class FullAttendanceScreen extends StatefulWidget {
@@ -24,12 +26,8 @@ class _FullAttendanceScreenState extends State<FullAttendanceScreen> {
         ),
         body: const TabBarView(children: [
           SemWiseAttendance(),
-          Center(
-            child: Text('Month wise'),
-          ),
-          Center(
-            child: Text('Subject wise'),
-          ),
+          MonthWiseAttendance(),
+          SubjectWiseAttendance(),
         ]),
       ),
     );
