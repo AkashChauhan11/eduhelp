@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       create: (context) => AttendanceProvider(),
       child: MaterialApp(
           navigatorKey: NavigationService.navigatorKey,
-          title: 'Flutter Demo',
+          title: 'Edu-help',
           theme: ThemeData().copyWith(
             useMaterial3: true,
             colorScheme: ColorScheme.fromSeed(
