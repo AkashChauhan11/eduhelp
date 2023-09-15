@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
+
 const Subject = db.define("subject", {
     s_no: {
         type: Sequelize.INTEGER,

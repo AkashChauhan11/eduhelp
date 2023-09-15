@@ -20,13 +20,13 @@ class SemSelectionDropDown extends StatelessWidget {
           fit: BoxFit.contain,
           child: Text("${attendanceProvider.currentSem}"),
         ),
-        items: [
+        items: const [
           DropdownMenuItem(
             alignment: Alignment.center,
             value: 1,
             child: Text(
               "1",
-              style: Theme.of(context).textTheme.headlineMedium,
+              //style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
           DropdownMenuItem(
@@ -34,7 +34,7 @@ class SemSelectionDropDown extends StatelessWidget {
             value: 2,
             child: Text(
               "2",
-              style: Theme.of(context).textTheme.headlineMedium,
+              //style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
           DropdownMenuItem(
@@ -42,7 +42,7 @@ class SemSelectionDropDown extends StatelessWidget {
             value: 3,
             child: Text(
               "3",
-              style: Theme.of(context).textTheme.headlineMedium,
+              //style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
           DropdownMenuItem(
@@ -50,7 +50,7 @@ class SemSelectionDropDown extends StatelessWidget {
             value: 4,
             child: Text(
               "4",
-              style: Theme.of(context).textTheme.headlineMedium,
+              //style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
           DropdownMenuItem(
@@ -58,7 +58,7 @@ class SemSelectionDropDown extends StatelessWidget {
             value: 5,
             child: Text(
               "5",
-              style: Theme.of(context).textTheme.headlineMedium,
+              //style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
           DropdownMenuItem(
@@ -66,7 +66,7 @@ class SemSelectionDropDown extends StatelessWidget {
             value: 6,
             child: Text(
               "6",
-              style: Theme.of(context).textTheme.headlineMedium,
+              //style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
         ],

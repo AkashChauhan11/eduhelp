@@ -1,4 +1,4 @@
-import 'package:education/screens/login.dart';
+import 'package:education/screens/Auth/login.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingScreen extends StatefulWidget {

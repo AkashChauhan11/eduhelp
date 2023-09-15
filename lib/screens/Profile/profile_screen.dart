@@ -1,3 +1,4 @@
+import 'package:education/screens/Subject/manage_subject.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_widget/current_sem_drop_down.dart';
@@ -62,7 +63,13 @@ class ProfileScreen extends StatelessWidget {
                         Icons.arrow_right,
                         size: 35,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ManageSubjects(),
+                            ));
+                      },
                     ),
                     title: Text(
                       "Manage Subjects",
@@ -74,7 +81,8 @@ class ProfileScreen extends StatelessWidget {
                   ListTile(
                     trailing: const Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: SizedBox(width: 100, child: SemSelectionDropDown()),
+                      child:
+                          SizedBox(width: 100, child: SemSelectionDropDown()),
                     ),
                     tileColor: Colors.grey[200],
                     title: Text(

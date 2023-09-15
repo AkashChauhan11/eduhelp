@@ -1,13 +1,29 @@
+import 'package:education/models/room_model.dart';
+import 'package:education/provider/attendance_provider.dart';
 import 'package:education/screens/Rooms/custom_widgets/room.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    //final provider = Provider.of<AttendanceProvider>(context, listen: false);
+    //provider.getuserrooms();
+  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+    //final provider = Provider.of<AttendanceProvider>(context, listen: false);
+    //List<UserRoom> userRooms = provider.userRooms;
     return SizedBox(
       width: double.infinity,
       child: SingleChildScrollView(
@@ -119,7 +135,7 @@ class HomeScreen extends StatelessWidget {
             //   RoomContainer(),
             // ])
             // SizedBox(height: 800,width: double.infinity,child: RoomContainer())
-            RoomContainer()
+            const RoomContainer()
           ],
         ),
       ),

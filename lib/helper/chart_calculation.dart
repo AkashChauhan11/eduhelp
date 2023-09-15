@@ -6,6 +6,7 @@ import '../models/subject_model.dart';
 
 class ChartCalculation {
   //for attendance home calulations
+  //getting all subjects list 
   static List<Subject> getSubList(AttendanceProvider attendanceProvider,
       {String screen = "AttendanceHome"}) {
     List<Subject> subjects = [];
@@ -23,6 +24,8 @@ class ChartCalculation {
     return subjects;
   }
 
+//Month Wise:-
+// getting list of subjects by selecting a month of year...
   static List<Subject> getSubListbyMonth(
     AttendanceProvider attendanceProvider,
   ) {
@@ -52,6 +55,7 @@ class ChartCalculation {
     return subjects;
   }
 
+// getting the percentage of attendance
   static double getAttendancePercentage(
       String subCode, int subSem, AttendanceProvider attendanceProvider) {
     List<AttendanceModel> allAttendance = attendanceProvider.attendanceList
@@ -68,13 +72,13 @@ class ChartCalculation {
   }
 
   //for sem wise calulations:
+  //getting the list of month in  a particular sem...
   static List<String> getMonthList(AttendanceProvider attendanceProvider) {
     int semWiseSelectedSem = attendanceProvider.semWiseSelectedSem == 0
         ? attendanceProvider.currentSem
         : attendanceProvider.semWiseSelectedSem;
     List<AttendanceModel> attendances = attendanceProvider.attendanceList
-        .where((attendance) =>
-            attendance.sem == semWiseSelectedSem)
+        .where((attendance) => attendance.sem == semWiseSelectedSem)
         .toList();
     List<String> months = [];
     for (AttendanceModel attendance in attendances) {
@@ -87,6 +91,7 @@ class ChartCalculation {
     return months;
   }
 
+//calculation for getting month wise percentages...
   static double getPercentageForMonthWise(
       AttendanceProvider attendanceProvider, String subCode) {
     List<AttendanceModel> attendances = [];
@@ -112,6 +117,7 @@ class ChartCalculation {
     return present / attendances.length;
   }
 
+  //to get month name from the date
   static String getMonthname(DateTime date) {
     // String month = DateFormat.MMMM().format(DateFormat('dd-MM-yyyy')
     //     .parse(attedndance.attendance![i].date!.toString()));
@@ -119,12 +125,14 @@ class ChartCalculation {
     return month;
   }
 
+  //To get year number from the date
   static getYear(DateTime date) {
     int year = int.parse(DateFormat.y().format(date));
     print(year);
     return year;
   }
 
+//getting percentage of attendance of a particular month...
   static double getAttendancePercentOfMonth(
       AttendanceProvider attendanceProvider, String month) {
     int semSelected = attendanceProvider.semWiseSelectedSem == 0

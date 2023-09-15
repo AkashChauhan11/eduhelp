@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
+const Folder=require('../models/folder');
 
-const UserFolder = db.define("userfolder", {
+const UserRoom = db.define("userRoom", {
     s_no: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -23,4 +24,6 @@ const UserFolder = db.define("userfolder", {
     timestamps:false
 });
 
-module.exports=UserFolder;
+UserRoom.hasOne(Folder,{foreignKey:'folder_id',sourceKey:'folder_id'});
+
+module.exports=UserRoom;

@@ -1,5 +1,5 @@
+import 'package:education/screens/Auth/signup.dart';
 import 'package:education/screens/mainpage.dart';
-import 'package:education/screens/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -137,7 +137,7 @@ class LoginScreen extends StatelessWidget {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SignupScreen(),
+                              builder: (context) => SignupScreen(),
                             ),
                           );
                         },

@@ -4,6 +4,7 @@ const Subject = require('../models/subject.js');
 
 //adding a new subject
 const addSubject = async (req, res) => {
+    console.log("in server file")
     const user_id = req.params.userid;
     const subCode = req.body.subCode;
     const subName = req.body.subName;

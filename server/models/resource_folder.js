@@ -1,8 +1,8 @@
 const db=require('../db');
 const Sequelize = require('sequelize');
 
-const Resource=db.define("reosurce",{
-    room_id:{
+const Resource=db.define("resource",{
+    resource_id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -19,6 +19,10 @@ const Resource=db.define("reosurce",{
         type:Sequelize.INTEGER,
         allowNull:false
     },
+    resource:{
+        type:Sequelize.BLOB,
+        allowNull:false
+    }
 },{
     timestamps:false
 });

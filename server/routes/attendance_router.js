@@ -1,5 +1,5 @@
 const {Router}=require('express');
-const attendanceController=require('../controller/attendance_controller')
+const attendanceController=require('../controller/attendance_controller') //impoerting the controller
 const AttendanceRouter=Router(); //creating a router
 
 

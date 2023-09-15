@@ -1,4 +1,5 @@
 import 'package:education/models/attendance_model.dart';
+import 'package:education/models/room_model.dart';
 import 'package:education/models/subject_model.dart';
 import 'package:education/service/apis.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,8 @@ class AttendanceProvider extends ChangeNotifier {
   //user academic details
   List<Subject> _subjects = [];
   List<AttendanceModel> _attendanceList = [];
+  List<UserRoom> _userRooms = [];
+
   int currentSem = 4;
 
   //user login details
@@ -15,6 +18,7 @@ class AttendanceProvider extends ChangeNotifier {
   //progress indicators
   bool fetchingData = false;
   bool clearfield = false;
+  bool loadingrooms = false;
 
   //variables for filling attendance
   int fillSem = 0;
@@ -27,11 +31,12 @@ class AttendanceProvider extends ChangeNotifier {
   //Full attendance screen variables
   int semWiseSelectedSem = 0;
   String filteredmonth = "";
-  int filteredyear=0;
+  int filteredyear = 0;
 
   //getters
   List<Subject> get subjects => _subjects;
   List<AttendanceModel> get attendanceList => _attendanceList;
+  List<UserRoom> get userRooms => _userRooms;
 
 //-------------------Methods for API calls--------------------------------
   // getting all subjects of a particular user
@@ -75,6 +80,23 @@ class AttendanceProvider extends ChangeNotifier {
 
   getUserAttendance() async {
     _attendanceList = await getuserattendace(userId);
+  }
+
+  getuserrooms() async {
+    loadingrooms = true;
+    _userRooms = await getallrooms(userId);
+    loadingrooms = false;
+    notifyListeners();
+  }
+
+  //subjects portion:----
+  addusersubjects(int sem, String subName, String subCode) async {
+    addsubject(userId, subCode, sem, subName);
+  }
+
+  deleteusersubjects(String subCode) {
+    print("in provider");
+    deletesub(userId, subCode);
   }
 }
 
