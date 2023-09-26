@@ -1,5 +1,6 @@
 import 'package:education/models/room_model.dart';
 import 'package:education/provider/attendance_provider.dart';
+import 'package:education/screens/Rooms/individualroom.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +24,7 @@ class _RoomContainerState extends State<RoomContainer> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<AttendanceProvider>(context, listen: true);
-    List<UserRoom> rooms = provider.userRooms;
+    List<Rooms> rooms = provider.userRooms;
     print(rooms.length.toString());
     final size = MediaQuery.of(context).size;
     return provider.loadingrooms
@@ -74,7 +75,14 @@ class _RoomContainerState extends State<RoomContainer> {
                             overflow: TextOverflow.ellipsis,
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => IndividualRoom(
+                                        room: rooms[index].folder!),
+                                  ));
+                            },
                             style: ElevatedButton.styleFrom(),
                             child: const Text('Explore'),
                           )

@@ -10,14 +10,21 @@ var storage = multer.diskStorage(
         filename: function ( req, file, cb ) {
             //req.body is empty...
             //How could I get the new_file_name property sent from client here?
-            cb( null, file.originalname+ '-' + Date.now()+".jpg");
+            cb( null, file.originalname);
         }
     }
 );
 const upload = multer({storage:storage});
+
+RoomRouter.post('/uploadfile',upload.single('resource'),roomController.uploadFile)
+
+//working apis
 RoomRouter.post('/createroom/:userid',roomController.createRoom);
 RoomRouter.get('/getrooms/:userid',roomController.getRooms);
-RoomRouter.post('/uploadfile',upload.single('resource'),roomController.uploadFile)
+RoomRouter.post('/joinroom/:userid',roomController.joinRoom);
+RoomRouter.get('/getresources/:parentId',roomController.getallresource)
+
+
 
 
 

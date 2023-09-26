@@ -21,7 +21,7 @@ const Resource=db.define("resource",{
     },
     resource:{
         type:Sequelize.BLOB,
-        allowNull:false
+        allowNull:true
     }
 },{
     timestamps:false

@@ -24,6 +24,7 @@ const UserRoom = db.define("userRoom", {
     timestamps:false
 });
 
-UserRoom.hasOne(Folder,{foreignKey:'folder_id',sourceKey:'folder_id'});
+UserRoom.hasOne(Folder,{foreignKey:"folder_id",sourceKey:"folder_id"});
+
 
 module.exports=UserRoom;

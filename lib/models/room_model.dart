@@ -1,23 +1,22 @@
-class UserRoom {
+class Rooms {
   int? sNo;
   int? userId;
   int? folderId;
   String? userType;
   Folder? folder;
 
-  UserRoom({this.sNo, this.userId, this.folderId, this.userType, this.folder});
+  Rooms({this.sNo, this.userId, this.folderId, this.userType, this.folder});
 
-  UserRoom.fromJson(Map<dynamic, dynamic> json) {
+  Rooms.fromJson(Map<dynamic, dynamic> json) {
     sNo = json['s_no'];
     userId = json['user_id'];
     folderId = json['folder_id'];
     userType = json['user_type'];
-    folder =
-        json['folder'] != null ? Folder.fromJson(json['folder']) : null;
+    folder = json['folder'] != null ? Folder.fromJson(json['folder']) : null;
   }
 
   Map<dynamic, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<dynamic, dynamic> data = <dynamic, dynamic>{};
     data['s_no'] = sNo;
     data['user_id'] = userId;
     data['folder_id'] = folderId;
@@ -34,7 +33,7 @@ class Folder {
   String? folderName;
   String? description;
   String? type;
-  DateTime? date;
+  String? date;
   String? joinString;
   String? imageUrl;
   int? adminId;
@@ -51,7 +50,7 @@ class Folder {
       this.adminId,
       this.parentFolderId});
 
-  Folder.fromJson(Map<String, dynamic> json) {
+  Folder.fromJson(Map<dynamic, dynamic> json) {
     folderId = json['folder_id'];
     folderName = json['folder_name'];
     description = json['description'];
@@ -63,8 +62,8 @@ class Folder {
     parentFolderId = json['parent_folder_id'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+  Map<dynamic, dynamic> toJson() {
+    final Map<dynamic, dynamic> data = <dynamic, dynamic>{};
     data['folder_id'] = folderId;
     data['folder_name'] = folderName;
     data['description'] = description;

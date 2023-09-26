@@ -26,6 +26,10 @@ const User = db.define("user", {
     token:{
         type: Sequelize.STRING,
         allowNull: true
+    },
+    image_url:{
+        type: Sequelize.STRING,
+        allowNull: true
     }
 });
 

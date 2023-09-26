@@ -1,6 +1,8 @@
 import 'package:education/models/attendance_model.dart';
+import 'package:education/models/resource_model.dart';
 import 'package:education/models/room_model.dart';
 import 'package:education/models/subject_model.dart';
+import 'package:education/models/task_model.dart';
 import 'package:education/service/apis.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +10,9 @@ class AttendanceProvider extends ChangeNotifier {
   //user academic details
   List<Subject> _subjects = [];
   List<AttendanceModel> _attendanceList = [];
-  List<UserRoom> _userRooms = [];
+  List<Rooms> _userRooms = [];
+  List<Resource> _resources = [];
+  List<Task> tasks = [];
 
   int currentSem = 4;
 
@@ -19,6 +23,8 @@ class AttendanceProvider extends ChangeNotifier {
   bool fetchingData = false;
   bool clearfield = false;
   bool loadingrooms = false;
+  bool loadingresources = false;
+  bool lodingtasks = false;
 
   //variables for filling attendance
   int fillSem = 0;
@@ -36,7 +42,8 @@ class AttendanceProvider extends ChangeNotifier {
   //getters
   List<Subject> get subjects => _subjects;
   List<AttendanceModel> get attendanceList => _attendanceList;
-  List<UserRoom> get userRooms => _userRooms;
+  List<Rooms> get userRooms => _userRooms;
+  List<Resource> get resources => _resources;
 
 //-------------------Methods for API calls--------------------------------
   // getting all subjects of a particular user
@@ -97,6 +104,33 @@ class AttendanceProvider extends ChangeNotifier {
   deleteusersubjects(String subCode) {
     print("in provider");
     deletesub(userId, subCode);
+  }
+
+  updateuserProfilePicture(String name, String path) {
+    updateprofilePicture(userId, name, path);
+  }
+
+  createRoom(String name, String description) {
+    createnewRoom(userId, name, description);
+  }
+
+  joinaRoom(String joinString) {
+    joinRoom(userId, joinString);
+  }
+
+  //resources
+  getfolderResources(int parentId) async {
+    loadingresources = true;
+    _resources = await getallresources(parentId);
+    loadingresources = false;
+    notifyListeners();
+  }
+
+  getusertask() async {
+    lodingtasks = true;
+    tasks = await getalltask(userId);
+    lodingtasks = false;
+    notifyListeners();
   }
 }
 

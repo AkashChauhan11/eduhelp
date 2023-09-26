@@ -40,9 +40,9 @@ const Folder=db.define("folder",{
         type: Sequelize.INTEGER,
         allowNull:true
     }
-    
 },{
     timestamps:false
 });
+
 
 module.exports=Folder;

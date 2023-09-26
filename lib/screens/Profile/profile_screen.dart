@@ -1,13 +1,24 @@
+import 'package:education/provider/attendance_provider.dart';
 import 'package:education/screens/Subject/manage_subject.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 import 'custom_widget/current_sem_drop_down.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  XFile? pickedfile;
+  final ImagePicker picker = ImagePicker();
+  @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<AttendanceProvider>(context);
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -31,6 +42,13 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
+            ElevatedButton(
+                onPressed: () async {
+                  final XFile? image = await picker.pickImage(
+                      source: ImageSource.gallery, imageQuality: 70);
+                  provider.updateuserProfilePicture(image!.name, image.path);
+                },
+                child: const Text("Change Image")),
             Text(
               "User Name",
               style: TextStyle(color: Theme.of(context).colorScheme.primary),
