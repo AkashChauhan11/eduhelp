@@ -7,8 +7,6 @@ import 'package:education/provider/attendance_provider.dart';
 import 'package:education/screens/Rooms/custom_widgets/pdfviewscreen.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
-import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -44,11 +42,11 @@ class _RoomHomeState extends State<RoomHome> {
                   uploadFile();
                   setState(() {});
                 },
-                icon: Icon(Icons.add_to_drive))
+                icon: const Icon(Icons.add_to_drive))
           ],
         ),
         body: provider.loadingresources
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : ListView.builder(
@@ -57,7 +55,7 @@ class _RoomHomeState extends State<RoomHome> {
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     trailing: IconButton(
-                      icon: Icon(Icons.download),
+                      icon: const Icon(Icons.download),
                       onPressed: () {
                         openFile(
                             url: resources[index].path!,
@@ -88,14 +86,14 @@ class _RoomHomeState extends State<RoomHome> {
   Future<File?> downloadPdf(String url, String name) async {
     print(url);
     final appStorage = await getApplicationDocumentsDirectory();
-    File file = File('${appStorage}/$name');
+    File file = File('$appStorage/$name');
     try {
       final response = await Dio().get(
         url,
         options: Options(
             responseType: ResponseType.bytes,
             followRedirects: false,
-            receiveTimeout: Duration(seconds: 10)),
+            receiveTimeout: const Duration(seconds: 10)),
       );
 
       final raf = file.openSync(mode: FileMode.write);

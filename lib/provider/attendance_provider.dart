@@ -53,7 +53,7 @@ class AttendanceProvider extends ChangeNotifier {
     await getsubject();
     await getUserAttendance();
     fetchingData = false;
-    print(attendanceList);
+    //print(attendanceList);
     notifyListeners();
   }
 
@@ -102,7 +102,7 @@ class AttendanceProvider extends ChangeNotifier {
   }
 
   deleteusersubjects(String subCode) {
-    print("in provider");
+    //print("in provider");
     deletesub(userId, subCode);
   }
 
